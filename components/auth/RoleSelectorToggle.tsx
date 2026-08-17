@@ -1,3 +1,5 @@
+"use client";
+
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ToggleButton from "@mui/material/ToggleButton";
 import Box from "@mui/material/Box";
@@ -16,7 +18,7 @@ const ROLES: { value: Role; label: string }[] = [
 
 export function RoleSelectorToggle({ value, onChange }: RoleSelectorToggleProps) {
   return (
-    <Box sx={{ mb: 4 }}>
+    <Box sx={{ mb: 3 }}>
       <ToggleButtonGroup
         value={value}
         exclusive
@@ -25,13 +27,45 @@ export function RoleSelectorToggle({ value, onChange }: RoleSelectorToggleProps)
         onChange={(_, next) => {
           if (next !== null) onChange(next);
         }}
+        sx={{
+          bgcolor: "rgba(0, 0, 0, 0.4)",
+          backdropFilter: "blur(8px)",
+          p: "4px",
+          borderRadius: 3,
+          border: "1px solid rgba(255, 255, 255, 0.12)",
+          "& .MuiToggleButtonGroup-grouped": {
+            border: 0,
+            borderRadius: 2,
+            mx: "2px",
+            color: "rgba(255, 255, 255, 0.7)",
+            transition: "all 0.3s ease",
+            fontWeight: 500,
+            "&.Mui-selected": {
+              bgcolor: "primary.main",
+              color: "#fff",
+              fontWeight: 700,
+              boxShadow: "0 4px 12px rgba(25, 118, 210, 0.4)",
+              "&:hover": {
+                bgcolor: "primary.dark",
+              },
+            },
+            "&:hover": {
+              bgcolor: "rgba(255, 255, 255, 0.08)",
+              color: "#fff",
+            },
+          },
+        }}
       >
         {ROLES.map((role) => (
           <ToggleButton
             key={role.value}
             value={role.value}
             aria-label={role.label}
-            sx={{ fontSize: { xs: "0.7rem", sm: "0.8125rem" }, textTransform: "none" }}
+            sx={{
+              fontSize: { xs: "0.725rem", sm: "0.8125rem" },
+              textTransform: "none",
+              py: 1,
+            }}
           >
             {role.label}
           </ToggleButton>
