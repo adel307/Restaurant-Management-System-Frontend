@@ -70,6 +70,7 @@ export const mockMeals: Meal[] = [
     rating: 4.8,
     orderCount: 412,
     imageAlt: "Charcoal-grilled kofta skewers on a metal plate",
+    imageUrl: "/Kofta-kebabs-1.jpg",
   },
   {
     id: "meal-02",

@@ -24,6 +24,7 @@ export interface Meal {
   rating: number;
   orderCount: number;
   imageAlt: string;
+  imageUrl?: string;
 }
 
 export interface StaffMember {

@@ -229,7 +229,7 @@ export default function HomePage() {
       <Box component="main" sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
         <TopBar />
         <HeroSection />
-        <ScrollStory />
+        
         <MenuSection />
         <Footer />
       </Box>
