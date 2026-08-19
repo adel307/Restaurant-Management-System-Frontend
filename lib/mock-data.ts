@@ -196,6 +196,28 @@ export const mockOrderHistory: SessionOrder[] = [
       { mealId: "meal-08", name: "Mango Sohary Juice", quantity: 1, unitPrice: 45 },
     ],
   },
+  {
+    id: "ord-2182",
+    status: "closed",
+    openedAt: "2026-08-05T13:12:00Z",
+    closedAt: "2026-08-05T14:02:00Z",
+    items: [
+      { mealId: "meal-05", name: "Crispy Falafel Bites", quantity: 1, unitPrice: 65 },
+      { mealId: "meal-03", name: "Baladi Fattoush", quantity: 1, unitPrice: 95 },
+      { mealId: "meal-08", name: "Mango Sohary Juice", quantity: 1, unitPrice: 45 },
+    ],
+  },
+  {
+    id: "ord-2186",
+    status: "closed",
+    openedAt: "2026-08-05T13:12:00Z",
+    closedAt: "2026-08-05T14:02:00Z",
+    items: [
+      { mealId: "meal-05", name: "Crispy Falafel Bites", quantity: 1, unitPrice: 65 },
+      { mealId: "meal-03", name: "Baladi Fattoush", quantity: 1, unitPrice: 95 },
+      { mealId: "meal-08", name: "Mango Sohary Juice", quantity: 1, unitPrice: 45 },
+    ],
+  },
 ];
 
 export function getMealById(mealId: string): Meal | undefined {

@@ -27,8 +27,7 @@ export function TopBar() {
         position="sticky"
         elevation={0}
         sx={{
-          // خلفية أزرق داكن زجاجية تناسب الـ Hero بألوان الـ Mesh الزرقاء
-          bgcolor: "rgba(1, 11, 38, 0.75)",
+          bgcolor: "#000",
           backdropFilter: "blur(14px)",
           WebkitBackdropFilter: "blur(14px)",
           borderBottom: "1px solid rgba(59, 130, 246, 0.15)", // Border ناعم بلون إضاءة الأزرق

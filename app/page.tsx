@@ -26,7 +26,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SecurityIcon from "@mui/icons-material/Security";
 
 import { HeroSection } from "@/components/home/client/HeroSection";
-import { ScrollStory } from "@/components/home/client/ScrollStory";
 import { MenuSection } from "@/components/home/client/MenuSection";
 import { Footer } from "@/components/home/client/Footer";
 
@@ -65,7 +64,6 @@ function LoggedOutPrompt() {
           minHeight: "100vh",
           position: "relative",
           overflow: "hidden",
-          // دمج الصورة مع طبقة تظليل داكنة (Overlay) لضمان وضوح النصوص
           backgroundImage: `linear-gradient(
             to bottom,
             rgba(18, 18, 18, 0.85) 0%,
@@ -75,7 +73,7 @@ function LoggedOutPrompt() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundAttachment: "fixed", // تجعل الصورة ثابتة أثناء التمرير (Parallax Effect)
+          backgroundAttachment: "fixed",
         }}
       >
         <Box sx={{ maxWidth: 1200, mx: "auto", px: { xs: 3, sm: 6 }, py: { xs: 6, md: 10 } }}>
@@ -114,7 +112,6 @@ function LoggedOutPrompt() {
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   lineHeight: 1.2,
-                  dropShadow: "0 4px 20px rgba(0,0,0,0.8)",
                 }}
               >
                 أفضل نظام لإدارة المطاعم والتعامل مع العملاء
@@ -172,7 +169,7 @@ function LoggedOutPrompt() {
                   <Card
                     sx={{
                       height: "100%",
-                      bgcolor: "rgba(18, 18, 18, 0.65)", // خففنا الخصائص الشفافة لتناسب خلفية الصورة
+                      bgcolor: "rgba(18, 18, 18, 0.65)",
                       backdropFilter: "blur(16px)",
                       border: "1px solid rgba(255, 255, 255, 0.12)",
                       borderRadius: 4,
@@ -217,6 +214,21 @@ function LoggedOutPrompt() {
   );
 }
 
+// نمط الخلفية الموحد ذو الصورة والطبقة الشفافة الداكنة
+const commonBackgroundStyle = {
+  minHeight: "100vh",
+  backgroundImage: `linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.75) 100%
+  ), url('/res4.jpg')`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  backgroundAttachment: "fixed",
+  backgroundRepeat: "no-repeat",
+  color: "#ffffff",
+};
+
 export default function HomePage() {
   const { role } = useSession();
 
@@ -229,7 +241,6 @@ export default function HomePage() {
       <Box component="main" sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
         <TopBar />
         <HeroSection />
-        
         <MenuSection />
         <Footer />
       </Box>
@@ -238,29 +249,31 @@ export default function HomePage() {
 
   if (role === "restaurant-admin") {
     return (
-      <Box component="main" sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
-        <TopBar />
-        <Box sx={{ px: { xs: 3, sm: 5 }, py: 5, maxWidth: 1152, mx: "auto" }}>
-          <Stack spacing={4}>
-            <AnalyticsDashboard />
-            <TicketRail />
-            <Box sx={{ display: "grid", gap: 3, gridTemplateColumns: { lg: "1fr 1fr" } }}>
-              <PopularMealsWidget />
-              <StaffManagementSection />
-            </Box>
-          </Stack>
+      <ThemeProvider theme={darkTheme}>
+        <Box component="main" sx={commonBackgroundStyle}>
+          <TopBar />
+          <Box sx={{ px: { xs: 2.5, sm: 5 }, py: { xs: 3, sm: 5 }, maxWidth: 1152, mx: "auto" }}>
+            <Stack spacing={{ xs: 3, sm: 4 }}>
+              <AnalyticsDashboard />
+              <TicketRail dark />
+              <Box sx={{ display: "grid", gap: 3, gridTemplateColumns: { lg: "1fr 1fr" } }}>
+                <PopularMealsWidget />
+                <StaffManagementSection />
+              </Box>
+            </Stack>
+          </Box>
         </Box>
-      </Box>
+      </ThemeProvider>
     );
   }
 
   // website-admin
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box component="main" sx={{ minHeight: "100vh", bgcolor: "background.default" }}>
+      <Box component="main" sx={commonBackgroundStyle}>
         <TopBar />
-        <Box sx={{ px: { xs: 3, sm: 5 }, py: 5, maxWidth: 1152, mx: "auto" }}>
-          <Stack spacing={4}>
+        <Box sx={{ px: { xs: 2.5, sm: 5 }, py: { xs: 3, sm: 5 }, maxWidth: 1152, mx: "auto" }}>
+          <Stack spacing={{ xs: 3, sm: 4 }}>
             <SuperAdminDashboard />
             <TicketRail dark />
             <RestaurantsDirectoryTable />

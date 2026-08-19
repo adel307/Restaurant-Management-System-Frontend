@@ -1,3 +1,5 @@
+"use client";
+
 import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Stack from "@mui/material/Stack";

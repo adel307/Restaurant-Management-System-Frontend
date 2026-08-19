@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { use, useState } from "react";
 import { notFound, useRouter } from "next/navigation";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -18,11 +18,14 @@ import { AddToOrderButton } from "@/components/meal/AddToOrderButton";
 export default function MealDetailsPage({
   params,
 }: {
-  params: { mealId: string };
+  params: Promise<{ mealId: string }>;
 }) {
+  // Unwrap the params Promise using React's use() hook
+  const { mealId } = use(params);
+
   const router = useRouter();
   const { role, addMealToOrder } = useSession();
-  const meal = getMealById(params.mealId);
+  const meal = getMealById(mealId);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
@@ -111,7 +114,7 @@ export default function MealDetailsPage({
                   }}
                 >
                   <QuantitySelector value={quantity} onChange={setQuantity} />
-                  
+
                   <Box sx={{ flexGrow: 1, maxWidth: { sm: 260 } }}>
                     <AddToOrderButton onAdd={handleAdd} added={added} />
                   </Box>

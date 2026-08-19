@@ -21,7 +21,7 @@ export function SessionOrderSummary({ items }: { items: OrderItem[] }) {
           Open ticket
         </Typography>
         <Typography variant="h5" sx={{ mb: 2 }}>
-          This session&apos;s order
+          This all our orders
         </Typography>
 
         {items.length === 0 ? (
