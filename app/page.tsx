@@ -114,7 +114,7 @@ function LoggedOutPrompt() {
                   lineHeight: 1.2,
                 }}
               >
-                أفضل نظام لإدارة المطاعم والتعامل مع العملاء
+               أهلاً بكم في مطعمنا 
               </Typography>
               <Typography
                 variant="h6"
